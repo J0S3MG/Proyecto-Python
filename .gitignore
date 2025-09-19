@@ -205,3 +205,50 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+
+# --- Entornos virtuales ---
+.venv/
+venv/
+ENV/
+env/
+env.bak/
+venv.bak/
+
+# --- Archivos de configuración ---
+.env
+.env.*
+!.env.example   # Se puede subir un ejemplo
+
+# --- Logs ---
+*.log
+
+# --- Dependencias y builds ---
+build/
+dist/
+*.egg-info/
+.eggs/
+wheels/
+share/python-wheels/
+
+# --- Base de datos (SQLite local, Postgres no aplica) ---
+*.db
+*.sqlite3
+
+# --- VSCode / PyCharm ---
+.vscode/
+.idea/
+
+# --- Node/React (si frontend está dentro del repo) ---
+node_modules/
+build/
+dist/
+.next/
+.parcel-cache/
+
+# --- Otros ---
+.DS_Store
+Thumbs.db
