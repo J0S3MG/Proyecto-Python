@@ -1,0 +1,20 @@
+# Ignorar el entorno virtual
+.venv/
+venv/
+
+# Bytecode de Python
+__pycache__/
+*.py[cod]
+
+# Archivos de configuración de VS Code
+.vscode/
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de logs
+*.log
+
+# Archivos de configuración de Python
+*.env
