@@ -1,49 +1,49 @@
 from fastapi import FastAPI, HTTPException # Traemos las clases de la carpeta lib.
+from Services.alumnoService import AlumnoService # Traemos al Servicio.
+from Models.alumno import Alumno # Traemos al Alumno.
 from typing import List # Aca traemos el obj Lista.
-from models.alumno import Alumno # Traemos al Alumno.
 #.\venv\Scripts\activate 
 
 # Este Archivo es el Controlador.
 app = FastAPI() # Aca creamos la variable que se va a encargar del servidor.
 
-# Inicializamos una lista vacía e indicamos que contendrá obj Alumnos.
-alumnosss: List[Alumno] = [] 
+servicio = AlumnoService() # Creamos el servico.
 
-# --- CRUD: Los @app definen los endpoints de cada metodo.
+# Los @app definen los endpoints de cada metodo.
 
 # GET: Lista todos los alumnos.
 @app.get("/alumno/", response_model=List[Alumno])
-def get_alumnos():
-    return alumnosss
+def get_all():
+    return servicio.get_alumno_all()
 
 # GET: Obtiene el alumno por legajo.
-@app.get("/alumno/{alumno_leg}", response_model=Alumno)
-def get_alumno(alumno_leg: int):
-    for alu in alumnosss:
-        if alu.legajo == alumno_leg:
-            return alu
+@app.get("/alumno/{legajo}", response_model=Alumno)
+def get_by_legajo(legajo: int):
+    alu = servicio.get_by_legajo(legajo)
+    if alu:
+        return alu
     raise HTTPException(status_code=404, detail="Alumno no encontrado")
 
 # POST: Crea al alumno.
 @app.post("/alumno/", response_model=Alumno)
 def create_alumno(alu: Alumno):
-    alumnosss.append(alu)
-    return alu
+    a = servicio.create_alumno(alu)
+    if a:
+        return a
+    raise HTTPException(status_code=400, detail="El Alumno no se pudo crear correctamente")
 
 # PUT: Actualizamos el alumno.
-@app.put("/alumno/{alumno_id}", response_model=Alumno)
-def update_alumno(alumno_id: int, updated_alu: Alumno):
-    for i, alu in enumerate(alumnosss):
-        if alu.id == alumno_id:
-            alumnosss[i] = updated_alu
-            return updated_alu
+@app.put("/alumno/{alu_id}", response_model=Alumno)
+def update_alumno(alu_id: int, alu_upd: Alumno):
+    alu = servicio.update_alumno(alu_upd, alu_id)
+    if alu:
+        return alu
     raise HTTPException(status_code=404, detail="Alumno no encontrado")
 
 # DELETE: Borramos el alumno.
-@app.delete("/alumno/{alu_leg}")
-def delete_user(alu_leg: int):
-    for i, alu in enumerate(alumnosss):
-        if alu.legajo == alu_leg:
-            del alumnosss[i]
-            return {"detalle": "Alumno borrado correctamente"}
+@app.delete("/alumno/{legajo}")
+def delete_alumno(legajo: int):
+    msj = servicio.delete_alumno(legajo)
+    if msj:
+        return msj
     raise HTTPException(status_code=404, detail="Alumno no encontrado")

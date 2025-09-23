@@ -1,20 +1,72 @@
-# Ignorar el entorno virtual
+# === Entornos virtuales ===
 .venv/
 venv/
+ENV/
+env/
+PyServer/venv/
 
-# Bytecode de Python
+# === Bytecode de Python ===
 __pycache__/
 *.py[cod]
+*$py.class
 
-# Archivos de configuración de VS Code
+# === Archivos de distribución / build ===
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# === Configuración de Python ===
+*.env
+*.ini
+*.cfg
+*.toml
+
+# === Logs ===
+*.log
+
+# === Directorios de caché ===
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# === IDEs y editores ===
 .vscode/
+.idea/
+*.swp
+*.swo
 
-# Archivos de sistema
+# === Archivos de sistema ===
 .DS_Store
 Thumbs.db
 
-# Archivos de logs
-*.log
+# === Jupyter Notebooks ===
+.ipynb_checkpoints/
 
-# Archivos de configuración de Python
-*.env
+# === Docker ===
+*.pid
+*.seed
+*.pid.lock
+
+# === Otros ===
+*.bak
+*.tmp
