@@ -1,5 +1,8 @@
+from sqlalchemy.orm import Session
+from typing import List
+from database import SessionLocal
 from Models.alumno import Alumno
-from typing import List # Aca traemos el obj Lista.
+from Repository.alumno_db import AlumnoDB
 
 # En este archivo definimos la clase que se encargara de la logica del negocio (CRUD).
 class AlumnoService:
