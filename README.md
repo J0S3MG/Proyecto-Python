@@ -20,10 +20,16 @@ Tecnologias a usar:
 
 FastApi: FastAPI proporciona la estructura y las herramientas fundamentales para construir el núcleo de una API de manera muy eficiente. Las funcionalidades que nos brindan son:
 
-Creación de Endpoints: Proporciona un sistema de enrutamiento intuitivo y potente para definir las rutas de tu API (por ejemplo, /usuarios, /alumno) y los metodos HTTP correspondientes (CRUD).
-Validación y Serialización de Datos: Gracias a su integración con Pydantic, FastAPI gestiona automáticamente la validación de los datos de entrada, asegurando que cumplan con los tipos y formatos definidos. También se encarga de la serialización de los datos de salida a formato JSON.
-Documentación Interactiva Automática: Obtienes una interfaz de usuario (Swagger UI y ReDoc) que permite explorar y probar los endpoints de tu API directamente desde el navegador solo poniendo localhost:8000/docs.
-Alto Rendimiento: Construido sobre Starlette y Pydantic, FastAPI es uno de los frameworks de Python más rápidos disponibles. Su soporte para operaciones asíncronas (async/await) lo hace ideal para aplicaciones que necesitan manejar una gran cantidad de solicitudes concurrentes de manera eficiente.
-Sistema de Inyección de Dependencias: Facilita la gestión de dependencias y la creación de código más modular, reutilizable y fácil de probar.
-Seguridad Integrada: Ofrece herramientas para implementar esquemas de seguridad comunes, como OAuth2 con tokens JWT, de una manera sencilla.
+ - Creación de Endpoints: Proporciona un sistema de enrutamiento intuitivo y potente para definir las rutas de tu API (por ejemplo, /usuarios, /alumno) y los metodos HTTP correspondientes (CRUD).
+
+ - Validación y Serialización de Datos: Gracias a su integración con Pydantic, FastAPI gestiona automáticamente la validación de los datos de entrada, asegurando que cumplan con los tipos y formatos definidos. También se encarga de la serialización de los datos de salida a formato JSON.
+ 
+ - Documentación Interactiva Automática: Obtienes una interfaz de usuario (Swagger UI y ReDoc) que permite explorar y probar los endpoints de tu API directamente desde el navegador solo poniendo localhost:8000/docs.
+
+ - Alto Rendimiento: Construido sobre Starlette y Pydantic, FastAPI es uno de los frameworks de Python más rápidos disponibles. Su soporte para operaciones asíncronas (async/await) lo hace ideal para aplicaciones que necesitan manejar una gran cantidad de solicitudes concurrentes de manera eficiente.
+
+ - Sistema de Inyección de Dependencias: Facilita la gestión de dependencias y la creación de código más modular, reutilizable y fácil de probar.
+
+ - Seguridad Integrada: Ofrece herramientas para implementar esquemas de seguridad comunes, como OAuth2 con tokens JWT, de una manera sencilla.
+
 Uvicorn: Uvicorn es un servidor web. Su trabajo principal es tomar el código de una aplicación web de Python (como una API hecha con FastAPI) y hacerlo accesible a través de internet o una red. Imagina que construyes una casa (la aplicación). Pues, Uvicorn es la puerta de entrada, la dirección y la infraestructura que permite a los visitantes (usuarios y otros servicios) llegar e interactuar con ella. En conjunto con otras tecnologias nos ayuda a desplegar (Deployment) nuestra aplicacion.
