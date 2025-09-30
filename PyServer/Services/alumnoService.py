@@ -11,7 +11,7 @@ class AlumnoService:
         return self.alumnosss
     
     # Retornamos el alumno segun el legajo.
-    def get_by_legajo(self,legajo: int) -> Alumno | None:
+    def get_by_legajo(self,legajo: int) -> Alumno | None: # Aca le digo lo que va a retornar. Esto tmb se puede hacer con la clase Optional.
         for alu in self.alumnosss:
             if alu.legajo == legajo:
                 return alu # Retornamos el alumno.
