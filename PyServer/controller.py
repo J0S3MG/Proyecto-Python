@@ -9,6 +9,7 @@ from typing import List # Aca traemos el obj Lista.
 # Este Archivo es el Controlador.
 app = FastAPI() # Aca creamos la variable que se va a encargar del servidor.
 
+servicio = AlumnoService()
 # Dependencia para obtener una sesión de la base de datos en cada request.
 def get_db(): # Crea y cierra sesiones automáticamente.
     db = SessionLocal() # Crea una nueva sesión (conexión a la BD).
@@ -17,18 +18,17 @@ def get_db(): # Crea y cierra sesiones automáticamente.
     finally:
         db.close() # Cuando termina la request, la sesión se cierra.
 
-
 # GET: Lista todos los alumnos.
 @app.get("/alumno/", response_model=List[Alumno])
 def get_all(db: Session = Depends(get_db)): # Depens: Inyectamos el resultado de get_db.
-    servicio = AlumnoService(db) # Dejó de ser global porque cada request necesita su propia sesión aislada.
+    servicio.iniciar_sesion(db) # Le pasamos la sesion a cada request.
     return servicio.get_alumno_all() # Devolvemos la lista de alumnos.
 
 
 # GET: Obtiene el alumno por legajo.
 @app.get("/alumno/{legajo}", response_model=Alumno)
 def get_by_legajo(legajo: int, db: Session = Depends(get_db)): # Iniciamos una nueva sesion.
-    servicio = AlumnoService(db) # Le pasamos la sesion.
+    servicio.iniciar_sesion(db) # Le pasamos la sesion.
     alu = servicio.get_by_legajo(legajo) # Buscamos el alumno por legajo.
     if alu: # Devolvemos el alumno si lo encuentra.
         return alu
@@ -38,7 +38,7 @@ def get_by_legajo(legajo: int, db: Session = Depends(get_db)): # Iniciamos una n
 # POST: Crea al alumno.
 @app.post("/alumno/", response_model=Alumno)
 def create_alumno(alu: Alumno, db: Session = Depends(get_db)):
-    servicio = AlumnoService(db)
+    servicio.iniciar_sesion(db)
     a = servicio.create_alumno(alu)
     if a:
         return a
@@ -48,7 +48,7 @@ def create_alumno(alu: Alumno, db: Session = Depends(get_db)):
 # PUT: Actualizamos el alumno.
 @app.put("/alumno/{alu_id}", response_model=Alumno)
 def update_alumno(alu_id: int, alu_upd: Alumno, db: Session = Depends(get_db)):
-    servicio = AlumnoService(db)
+    servicio.iniciar_sesion(db)
     alu = servicio.update_alumno(alu_upd, alu_id)
     if alu:
         return alu
@@ -58,7 +58,7 @@ def update_alumno(alu_id: int, alu_upd: Alumno, db: Session = Depends(get_db)):
 # DELETE: Borramos el alumno.
 @app.delete("/alumno/{legajo}")
 def delete_alumno(legajo: int, db: Session = Depends(get_db)):
-    servicio = AlumnoService(db)
+    servicio.iniciar_sesion(db)
     msj = servicio.delete_alumno(legajo)
     if msj:
         return msj

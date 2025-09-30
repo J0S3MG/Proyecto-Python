@@ -5,7 +5,7 @@ from Repository.alumnoDB import AlumnoDB  # Traemos nuestro ORM.
 
 # En este archivo definimos la clase que se encargara de la logica del negocio (CRUD).
 class AlumnoService:
-    def __init__(self, db: Session): # Ahora en vez de inicializar una lista le pasamos una sesion.
+    def iniciar_sesion(self, db: Session): # Ahora en vez de inicializar una lista le pasamos una sesion.
         self.db = db
 
     # Obtener todos los alumnos
