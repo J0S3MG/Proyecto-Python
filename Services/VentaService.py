@@ -47,7 +47,7 @@ class VentaService(VentaServiceInterface):
     # --------------------------- GET VENTAS BY COMPRADOR -----------------------------
     def get_ventas_by_comprador(self, nombre: str) -> List[VentaResponse]:
         """Devuelve todas las ventas realizadas a un comprador por su nombre"""
-        ventas = self.repo.get_ventas_by_comprador(nombre)
+        ventas = self.repo.get_by_comprador(nombre)
         return [VentaResponse.model_validate(venta) for venta in ventas]
     # --------------------------------------------------------------------------------
 
