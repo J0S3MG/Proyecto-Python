@@ -2,8 +2,9 @@ from typing import List
 from Services.Interfaces.AutoInterface import AutoRepositoryInterface, AutoServiceInterface# Le pasamos ambas interfaces.
 from Models.Auto import AutoCreate, AutoUpdate, AutoResponse
 
-#------------ Implementamos la interfaz de Servicio --------------------------
 class AutoService(AutoServiceInterface):
+	"""Implementación del AutoServiceInterface"""
+
 	def __init__(self, repo: AutoRepositoryInterface):
 		self.repo = repo # Le pasamos la interfaz de repositorio (Esto hara la Inyeccion de Dependencia).
 	
@@ -44,11 +45,11 @@ class AutoService(AutoServiceInterface):
 
 
 	# ------------------------------------ UPDATE ------------------------------------
-	def update_auto(self, nro_chasis: str, auto_update: AutoUpdate) -> AutoResponse:
+	def update_auto(self, auto_id: int, auto_update: AutoUpdate) -> AutoResponse:
 		"""Actualiza un auto por su Nro de Chasis"""
-		auto_actualizado = self.repo.update(nro_chasis, auto_update)
+		auto_actualizado = self.repo.update(auto_id, auto_update)
 		if not auto_actualizado:
-			raise ValueError(f"No se pudo actualizar el auto con chasis {nro_chasis}")
+			raise ValueError(f"No se pudo actualizar el auto con chasis {auto_id}")
 		return AutoResponse.model_validate(auto_actualizado)
 	# --------------------------------------------------------------------------------
 

@@ -50,10 +50,10 @@ def get_auto( auto_id: int,
 # ------------------------------- GET BY CHASIS -------------------------------------
 # Definimos el endpoint: GET/autos/{nro_chasis}.
 @router.get("/chasis/{nro_chasis}", response_model=AutoResponse)
-def get_auto_by_chasis( nro_chasis: str,
+def get_auto_by_chasis( auto_id: int,
     service: AutoServiceInterface = Depends(get_auto_service)) -> AutoResponse:
     try:
-        return service.get_auto_by_chasis(nro_chasis)
+        return service.get_auto_by_chasis(auto_id)
     except Exception as e:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,

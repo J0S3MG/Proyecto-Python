@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from contextlib import asynccontextmanager
 from Controllers.AutoController import router as auto_router # Importamos el enrutador y le ponemos un nuevo nombre.
+from Controllers.VentaController import router as venta_router # Importamos el enrutador y le ponemos un nuevo nombre.
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -19,3 +20,6 @@ app = FastAPI(
 
 # Incluimos el router de auto.
 app.include_router(auto_router)
+
+# Incluimos el router de venta.
+app.include_router(venta_router)

@@ -6,11 +6,15 @@ from Models.Auto import AutoCreate, AutoUpdate, AutoResponse
 class AutoRepositoryInterface(ABC): 
     """Interfaz para definir las operaciones del repositorio de Auto"""
     
-    @abstractmethod # Devolvemos la lista entera de autos.
+    @abstractmethod # Creamos el auto (POST).
+    def create(self, nuevo: AutoCreate) -> AutoResponse:
+        pass
+
+    @abstractmethod # Devolvemos la lista paginada de autos (GET).
     def get_all(self, skip: int = 0, limit: int = 100) -> List[AutoResponse]:
         pass
 
-    @abstractmethod # Buscamos el auto por id (GET/id).
+    @abstractmethod # Buscamos el auto por id (PK autogenerada por la BD) (GET/id).
     def get_by_id(self, auto_id: int) -> Optional[AutoResponse]:
         pass
     
@@ -18,15 +22,11 @@ class AutoRepositoryInterface(ABC):
     def get_by_chasis(self,nro_chasis: str) -> Optional[AutoResponse]:
         pass
 
-    @abstractmethod # Creamos el auto (POST).
-    def create(self, nuevo: AutoCreate) -> AutoResponse:
-        pass
-
-    @abstractmethod # Actualizamos el auto buscando por su nro de chasis (PUT).
-    def update(self, nro_chasis: str, auto_update: AutoUpdate) -> Optional[AutoResponse]:
+    @abstractmethod # Actualizamos el auto buscando por su id (PUT).
+    def update(self, auto_id: int, auto_update: AutoUpdate) -> Optional[AutoResponse]:
         pass
     
-    @abstractmethod # Borramos el auto buscando por su id (PK autogenerada por la BD) (DELETE).
+    @abstractmethod # Borramos el auto buscando por su id (DELETE).
     def delete(self, auto_id: int) -> bool:
         pass
 
@@ -52,7 +52,7 @@ class AutoServiceInterface(ABC):
         pass
 
     @abstractmethod
-    def update_auto(self, nro_chasis: str, auto_update: AutoUpdate) -> AutoResponse:
+    def update_auto(self, auto_id: int, auto_update: AutoUpdate) -> AutoResponse:
         pass
 
     @abstractmethod

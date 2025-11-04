@@ -3,7 +3,7 @@ from Services.Interfaces.AutoInterface import AutoRepositoryInterface # La traem
 from Models.Auto import Auto, AutoCreate, AutoUpdate, AutoResponse
 
 class AutoRepository(AutoRepositoryInterface):
-    """Implementación en memoria del AutoRepositoryInterface"""
+    """Implementación del AutoRepositoryInterface"""
 
     def __init__(self):
         self.lista_autos: List[Auto] = [
@@ -12,6 +12,23 @@ class AutoRepository(AutoRepositoryInterface):
             Auto(id=3, marca="Honda", modelo="Civic", ano=2021, nro_chasis="CCC333", ventas=[]),
         ]
         self.pk_autogenerada = 4
+
+
+    # -------------------------------------- CREATE ------------------------------------
+    def create(self, nuevo: AutoCreate) -> AutoResponse:
+        """Crea un nuevo auto y lo almacena"""
+        new_auto = Auto(
+            id=self.pk_autogenerada,
+            marca=nuevo.marca,
+            modelo=nuevo.modelo,
+            ano=nuevo.ano,
+            nro_chasis=nuevo.nro_chasis,
+            ventas=[]
+        )
+        self.pk_autogenerada += 1
+        self.lista_autos.append(new_auto)
+        return new_auto
+    # ----------------------------------------------------------------------------------
 
 
     # ------------------------------------ GET ALL ------------------------------------
@@ -35,27 +52,10 @@ class AutoRepository(AutoRepositoryInterface):
     # ----------------------------------------------------------------------------------
 
 
-    # -------------------------------------- CREATE ------------------------------------
-    def create(self, nuevo: AutoCreate) -> AutoResponse:
-        """Crea un nuevo auto y lo almacena"""
-        new_auto = Auto(
-            id=self.pk_autogenerada,
-            marca=nuevo.marca,
-            modelo=nuevo.modelo,
-            ano=nuevo.ano,
-            nro_chasis=nuevo.nro_chasis,
-            ventas=[]
-        )
-        self.pk_autogenerada += 1
-        self.lista_autos.append(new_auto)
-        return new_auto
-    # ----------------------------------------------------------------------------------
-
-
     # -------------------------------------- UPDATE ------------------------------------
-    def update(self, nro_chasis: str, data: AutoUpdate) -> Optional[AutoResponse]:
+    def update(self, auto_id: int, data: AutoUpdate) -> Optional[AutoResponse]:
         """Actualiza un auto existente por número de chasis"""
-        auto = self.get_by_chasis(nro_chasis)
+        auto = self.get_by_chasis(auto_id)
         if not auto:
             return None
 
