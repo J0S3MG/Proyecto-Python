@@ -1,0 +1,16 @@
+# --- Framework principal ---
+fastapi==0.115.0
+uvicorn[standard]==0.30.1
+
+# --- ORM y base de datos ---
+sqlmodel==0.0.22
+psycopg2-binary==2.9.11  # Driver PostgreSQL precompilado (no requiere compilador C++)
+# Si querés asincronía, instalá asyncpg manualmente luego si tu entorno lo permite.
+# asyncpg==0.30.0  # (Opcional - puede requerir compilación en Windows)
+
+# --- Validación y modelos ---
+pydantic==2.9.2
+pydantic-settings==2.4.0
+
+# --- Utilidades ---
+python-dotenv==1.0.1  # Cargar variables desde .env
