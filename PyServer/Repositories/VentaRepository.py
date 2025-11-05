@@ -13,9 +13,10 @@ class VentaRepository(VentaRepositoryInterface):
             Venta(id=1, nom_comprador="Juan Pérez", precio=15000.00, fecha_venta=datetime(2024, 5, 10, 14, 30), auto_id=1),
             Venta(id=2, nom_comprador="María González", precio=12500.50, fecha_venta=datetime(2024, 6, 22, 10, 15), auto_id=2),
             Venta(id=3, nom_comprador="Carlos López", precio=18000.75, fecha_venta=datetime(2024, 7, 5, 16, 45), auto_id=3),
+            Venta(id=4, nom_comprador="Ana Torres", precio=16000.00, fecha_venta=datetime(2024, 8, 12, 11, 10), auto_id=1),
+            Venta(id=5, nom_comprador="Ricardo Díaz", precio=17050.90, fecha_venta=datetime(2024, 9, 18, 17, 55), auto_id=2),
         ]
-        self.pk_autogenerada = 4
-
+        self.pk_autogenerada = 6
 
     # -------------------------------------- CREATE ------------------------------------
     def create(self, nuevo: VentaCreate) -> VentaResponse:

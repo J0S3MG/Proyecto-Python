@@ -37,9 +37,9 @@ class VentaService(VentaServiceInterface):
 
 
     # ----------------------------- GET VENTAS BY AUTO --------------------------------
-    def get_ventas_by_auto(self, auto_id: int, skip: int = 0, limit: int = 100) -> List[VentaResponse]:
+    def get_ventas_by_auto(self, auto_id: int) -> List[VentaResponse]:
         """Devuelve todas las ventas relacionadas con un auto"""
-        ventas = self.repo.get_ventas_by_auto(auto_id, skip=skip, limit=limit)
+        ventas = self.repo.get_by_auto_id(auto_id)
         return [VentaResponse.model_validate(venta) for venta in ventas]
     # --------------------------------------------------------------------------------
 

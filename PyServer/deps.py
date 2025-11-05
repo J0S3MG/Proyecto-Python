@@ -6,6 +6,8 @@ from Services.AutoService import AutoService
 from Services.Interfaces.VentaInterface import VentaRepositoryInterface, VentaServiceInterface
 from Repositories.VentaRepository import VentaRepository
 from Services.VentaService import VentaService
+from Services.Interfaces.JoinInterface import JoinServiceInterface
+from Services.JoinService import JoinService
 
 # --------------------------------------------------- FACTORY --------------------------------------------------------------------------
 # Este archivo cumple la funcion de una "Fabrica" (Solo hace Inyeccion de Dependencia).
@@ -32,6 +34,12 @@ def get_venta_repository() -> VentaRepositoryInterface:
 # En este caso hacemos la inyeccion de dependencia del Servicio.
 def get_venta_service(venta_repo: VentaRepositoryInterface = Depends(get_venta_repository)) -> VentaServiceInterface:
     return VentaService(venta_repo)
+# ----------------------------------------------------------------------------------------------------------------------------------------
+
+
+# --------------------------------------------------- JOIN FACTORY -----------------------------------------------------------------------
+def get_join_service(auto_repo: AutoRepositoryInterface = Depends(get_auto_repository), venta_repo: VentaRepositoryInterface = Depends(get_venta_repository)) -> VentaServiceInterface:
+    return JoinService(auto_repo,venta_repo)
 # ----------------------------------------------------------------------------------------------------------------------------------------
 
 

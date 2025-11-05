@@ -36,7 +36,4 @@ class VentaResponse(VentaBase):
     """Modelo para la respuesta de Venta"""
     id: int
 
-# --- DTO para mostrar la venta con información del auto ---
-class VentaResponseWithAuto(VentaResponse):
-    """Modelo para la respuesta de la Venta con la información del auto"""
-    auto: Optional["AutoResponse"] = None
+

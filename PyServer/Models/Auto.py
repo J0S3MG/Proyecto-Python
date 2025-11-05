@@ -2,7 +2,6 @@ from sqlmodel import SQLModel, Field, Relationship
 from datetime import datetime
 from typing import Optional, List
 from pydantic import BaseModel
-from Models.Venta import Venta
 
 # --- Clase Base que valida los datos del Auto ---
 class AutoBase(SQLModel): 
@@ -37,8 +36,6 @@ class AutoResponse(AutoBase):
     """Modelo para la respuesta de Auto"""
     id: int
 
-# --- DTO para mostrar las ventas del auto ---
-class AutoResponseWithVentas(AutoResponse):
-    """Modelo para la respuesta del Auto con la informacion de la venta"""
-    venta: Optional["VentaResponse"] = None
+
+
 

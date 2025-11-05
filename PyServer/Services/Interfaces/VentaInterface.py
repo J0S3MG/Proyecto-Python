@@ -60,7 +60,7 @@ class VentaServiceInterface(ABC):
         pass
     
     @abstractmethod 
-    def get_ventas_by_auto(self, auto_id: int, skip: int = 0, limit: int = 100) -> List[VentaResponse]:
+    def get_ventas_by_auto(self, auto_id: int) -> List[VentaResponse]:
         pass
 
     @abstractmethod

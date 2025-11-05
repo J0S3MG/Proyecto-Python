@@ -1,16 +1,40 @@
 from typing import List, Optional
 from Services.Interfaces.AutoInterface import AutoRepositoryInterface # La traemos desde el Servicio.
 from Models.Auto import Auto, AutoCreate, AutoUpdate, AutoResponse
+from Models.Venta import Venta
+from datetime import datetime
 
 class AutoRepository(AutoRepositoryInterface):
     """Implementación del AutoRepositoryInterface"""
 
     def __init__(self):
+        # Ventas iniciales
+        venta1 = Venta(id=1, nom_comprador="Juan Pérez", precio=15000.00,
+                       fecha_venta=datetime(2024, 5, 10, 14, 30), auto_id=1)
+
+        venta2 = Venta(id=2, nom_comprador="María González", precio=12500.50,
+                       fecha_venta=datetime(2024, 6, 22, 10, 15), auto_id=2)
+
+        venta3 = Venta(id=3, nom_comprador="Carlos López", precio=18000.75,
+                       fecha_venta=datetime(2024, 7, 5, 16, 45), auto_id=3)
+
+        venta4 = Venta(id=4, nom_comprador="Ana Torres", precio=16000.00,
+                       fecha_venta=datetime(2024, 8, 12, 11, 10), auto_id=1)
+
+        venta5 = Venta(id=5, nom_comprador="Ricardo Díaz", precio=17050.90,
+                       fecha_venta=datetime(2024, 9, 18, 17, 55), auto_id=2)
+
         self.lista_autos: List[Auto] = [
-            Auto(id=1, marca="Toyota", modelo="Corolla", ano=2020, nro_chasis="AAA111", ventas=[]),
-            Auto(id=2, marca="Ford", modelo="Focus", ano=2018, nro_chasis="BBB222", ventas=[]),
-            Auto(id=3, marca="Honda", modelo="Civic", ano=2021, nro_chasis="CCC333", ventas=[]),
+            Auto(id=1, marca="Toyota", modelo="Corolla", ano=2020, nro_chasis="AAA111",
+                 ventas=[venta1, venta4]),  
+
+            Auto(id=2, marca="Ford", modelo="Focus", ano=2018, nro_chasis="BBB222",
+                 ventas=[venta2, venta5]),  
+
+            Auto(id=3, marca="Honda", modelo="Civic", ano=2021, nro_chasis="CCC333",
+                 ventas=[venta3])            
         ]
+
         self.pk_autogenerada = 4
 
 
