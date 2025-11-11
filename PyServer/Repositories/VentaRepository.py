@@ -5,7 +5,7 @@ from Models.Venta import Venta, VentaCreate, VentaUpdate, VentaResponse
 
 # -------------------- Implementación en Memoria del Repositorio --------------------
 class VentaRepository(VentaRepositoryInterface):
-    """Implementación en memoria de la VentaRepositoryInterface"""
+    """Implementación de la VentaRepositoryInterface"""
 
     def __init__(self):
         # Lista de ventas iniciales
