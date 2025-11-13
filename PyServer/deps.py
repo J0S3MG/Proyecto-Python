@@ -1,5 +1,7 @@
 import os
 from fastapi import Depends
+from sqlmodel import Session
+from database import get_session
 from Services.Interfaces.AutoInterface import AutoRepositoryInterface, AutoServiceInterface
 from Repositories.AutoRepository import AutoRepository
 from Services.AutoService import AutoService
@@ -17,8 +19,8 @@ from Services.JoinService import JoinService
 
 # --------------------------------------------------- AUTO FACTORY ---------------------------------------------------------------------
 # Con este metodo realizamos la inyeccion de dependencia del Repositorio.
-def get_auto_repository() -> AutoRepositoryInterface:
-    return AutoRepository()# De esta manera da igual los cambios que hagamos en la implementacion que el resto seguira funcionando igual.
+def get_auto_repository(session: Session = Depends(get_session)) -> AutoRepositoryInterface:
+    return AutoRepository(session)# De esta manera da igual los cambios que hagamos en la implementacion que el resto seguira funcionando igual.
 
 # En este caso hacemos la inyeccion de dependencia del Servicio.
 def get_auto_service(auto_repo: AutoRepositoryInterface = Depends(get_auto_repository)) -> AutoServiceInterface:
@@ -28,8 +30,8 @@ def get_auto_service(auto_repo: AutoRepositoryInterface = Depends(get_auto_repos
 
 # --------------------------------------------------- VENTA FACTORY ---------------------------------------------------------------------
 # Con este metodo realizamos la inyeccion de dependencia del Repositorio.
-def get_venta_repository() -> VentaRepositoryInterface:
-    return VentaRepository()
+def get_venta_repository(session: Session = Depends(get_session)) -> VentaRepositoryInterface:
+    return VentaRepository(session)
 
 # En este caso hacemos la inyeccion de dependencia del Servicio.
 def get_venta_service(venta_repo: VentaRepositoryInterface = Depends(get_venta_repository)) -> VentaServiceInterface:

@@ -1,15 +1,17 @@
 from fastapi import FastAPI
 from contextlib import asynccontextmanager
-from database import create_db_and_tables
+from database import create_db_and_tables, engine
 from Controllers.AutoController import router as auto_router # Importamos el enrutador y le ponemos un nuevo nombre.
 from Controllers.VentaController import router as venta_router # Importamos el enrutador y le ponemos un nuevo nombre.
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    create_db_and_tables() # Nos aseguramos de crear la BD y sus tablas.
+    print("="*80)
+    print("🚀 INICIANDO APLICACIÓN")
+    print("="*80)
+    create_db_and_tables()
     yield
-    print("App terminando...")
-    # Código de shutdown
+    print("⛔ App terminando...")
     
 app = FastAPI(
     title="FastAPI CRUD Ventas-Auto", 

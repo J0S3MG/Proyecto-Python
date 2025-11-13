@@ -52,10 +52,10 @@ def get_auto( auto_id: int,
 # ------------------------------- GET BY CHASIS -------------------------------------
 # Definimos el endpoint: GET/autos/{nro_chasis}.
 @router.get("/chasis/{nro_chasis}", response_model=AutoResponse, summary="Obtener un Auto por su chasis", operation_id="Obtener_Auto_por_Chasis")
-def get_auto_by_chasis( auto_id: int,
+def get_auto_by_chasis( nro_chasis: str,
     servicio: AutoServiceInterface = Depends(get_auto_service)) -> AutoResponse:
     try:
-        return servicio.get_auto_by_chasis(auto_id)
+        return servicio.get_auto_by_chasis(nro_chasis)
     except Exception as e:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
@@ -65,8 +65,8 @@ def get_auto_by_chasis( auto_id: int,
 
 # -------------------------------- PUT ----------------------------------------------
 # Definimos el endpoint: PUT/autos/{auto_id}.
-@router.put("/{nro_chasis}", response_model=AutoResponse, summary="Actualizar un Auto", operation_id="Actualizar_Auto")
-def update_auto( nro_chasis: str, data: AutoUpdate,
+@router.put("/{auto_id}", response_model=AutoResponse, summary="Actualizar un Auto", operation_id="Actualizar_Auto")
+def update_auto( auto_id: int, data: AutoUpdate,
     servicio: AutoServiceInterface = Depends(get_auto_service)) -> AutoResponse:
     try:
         return servicio.update_auto(nro_chasis, data)

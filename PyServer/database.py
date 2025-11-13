@@ -3,7 +3,13 @@ from typing import Generator
 
 DATABASE_URL = "postgresql://postgres:1234@localhost:5432/PruebaPy" # Le paso la url de la BD.
 
-engine = create_engine(DATABASE_URL, echo=True) # Creamos el motor de la BD.
+# Agregamos parámetros importantes para PostgreSQL
+engine = create_engine(
+    DATABASE_URL, 
+    echo=True,
+    pool_pre_ping=True,  # Verifica las conexiones antes de usarlas
+    pool_recycle=3600    # Recicla conexiones cada hora
+)
 
 def create_db_and_tables():
     """Nos aseguramos de crear la BD y sus Tablas"""
@@ -11,5 +17,8 @@ def create_db_and_tables():
 
 def get_session() -> Generator[Session, None, None]:
     """Devuelve una sesion de la BD"""
-    with Session(engine) as session:
-        yield session
+    session = Session(engine) # 1. Crea la sesión sin el 'with'
+    try:
+        yield session # 2. La devuelve para que FastAPI la use
+    finally:
+        session.close()
