@@ -69,7 +69,7 @@ def get_auto_by_chasis( nro_chasis: str,
 def update_auto( auto_id: int, data: AutoUpdate,
     servicio: AutoServiceInterface = Depends(get_auto_service)) -> AutoResponse:
     try:
-        return servicio.update_auto(nro_chasis, data)
+        return servicio.update_auto(auto_id, data)
     except Exception as e:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
@@ -94,8 +94,8 @@ def delete_auto( auto_id: int,
 # ----------------------------------------------------------------------------------
 
 
-# ----------------------------------------------------------------------------------
-@router.get("/auto/{auto_id}", response_model=AutoResponseWithVentas, summary="Listar un Auto con todas sus ventas ", operation_id="Listar_Auto_con_Ventas")
+# ----------------------------------- GET AUTO CON VENTAS -----------------------------------------------
+@router.get("/auto/{auto_id}/with-ventas", response_model=AutoResponseWithVentas, summary="Listar un Auto con todas sus ventas ", operation_id="Listar_Auto_con_Ventas")
 def get_auto_with_ventas(auto_id: int, servicio: JoinServiceInterface = Depends(get_join_service)):
     result = servicio.get_auto_with_ventas(auto_id)
 
@@ -103,4 +103,4 @@ def get_auto_with_ventas(auto_id: int, servicio: JoinServiceInterface = Depends(
         raise HTTPException(status_code=404, detail="Auto no encontrado")
 
     return result
-# ----------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------------------------

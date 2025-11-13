@@ -112,8 +112,8 @@ def delete_venta( venta_id: int,
 # -----------------------------------------------------------------------------------
 
 
-# -----------------------------------------------------------------------------------
-@router.get("/venta/{venta_id}", response_model=VentaResponseWithAuto, summary="Listar una venta con su auto", operation_id="Listar_Venta_con_Auto")
+# ----------------------------------- GET VENTA CON AUTO ------------------------------------------------
+@router.get("/venta/{venta_id}/with-auto", response_model=VentaResponseWithAuto, summary="Listar una venta con su auto", operation_id="Listar_Venta_con_Auto")
 def get_venta_with_auto(venta_id: int, servicio: JoinServiceInterface = Depends(get_join_service)):
     result = servicio.get_venta_with_auto(venta_id)
 
@@ -121,4 +121,4 @@ def get_venta_with_auto(venta_id: int, servicio: JoinServiceInterface = Depends(
         raise HTTPException(status_code=404, detail="Venta no encontrada")
 
     return result
-# -----------------------------------------------------------------------------------
+# ---------------------------------------------------------------------------------------------------------
