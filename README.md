@@ -2,32 +2,35 @@
 
 Una API REST que cumple con los principios SOLID. Que permite Crear y Gestionar autos y ventas.
 
-## Características
+### Estructura del Proyecto
 
-### Auto CRUD
-- Obtener todos los autos paginados.
-- Obtener un auto por ID o Chasis.
-- Obtener un auto con sus ventas.
-- Agregar nuevos autos o modificar existentes.
-- Eliminar un auto. 
+```
+PyServer/
+├── main.py              # Aplicación FastAPI principal
+├── database.py          # Configuración de base de datos PostgreSQL
+├── deps.py              # "Factory" donde se hace la DIP.
+├── Controllers.py       # Carpeta con los Controladores de la API (Auto, Venta)
+├── Services.py          # Carpeta con los Servicios (Auto, Venta, Join)
+|      └── Interfaces    # Carpeta con las Interfaces para los Servicios y Repositorios
+├── Repositories.py      # Carpeta con los Repositorios (Auto, Venta)
+├── Models.py            # Carpeta con los Modelos (Auto, Venta, Join)
+└── requirements.txt     # Dependencias del proyecto
 
-### Venta CRUD 
-- Obtener todas las ventas paginadas.
-- Obtener una venta por ID o Comprador o Auto.
-- Obtener una venta con su auto.
-- Agregar nuevas ventas o modificar existentes.
-- Eliminar una venta.
+```
 
 ## Tecnologias Utilizadas
 
-- Python 3.13.7 – Lenguaje principal del proyecto, usado para construir la lógica backend y manejar datos de forma eficiente.
-- FastAPI 0.115.0 – Framework moderno y rápido para crear APIs con Python, basado en tipado y compatible con OpenAPI/Swagger.
-- Uvicorn [standard] 0.30.1 – Servidor ASGI de alto rendimiento utilizado para ejecutar aplicaciones FastAPI.
-- SQLModel 0.0.22 – ORM (Object Relational Mapper) que combina la simplicidad de SQLAlchemy y Pydantic para trabajar con bases de datos.
-- psycopg2-binary 2.9.11 – Adaptador que permite la conexión y ejecución de consultas en bases de datos PostgreSQL.
-- Pydantic 2.9.2 – Biblioteca para validación y manejo de datos usando modelos basados en anotaciones de tipo.
-- pydantic-settings 2.4.0 – Extensión de Pydantic para la configuración del entorno (variables .env, configuraciones del servidor, etc.).
-- python-dotenv 1.0.1 – Permite cargar variables de entorno desde un archivo .env, facilitando la configuración y la seguridad de credenciales.
+| Tecnología              | Descripción                                                                                                              |
+| :---------------------- | :----------------------------------------------------------------------------------------------------------------------- |
+| **Python 3.13.7**       | Lenguaje principal del proyecto, usado para construir la lógica backend y manejar datos de forma eficiente.              |
+| **FastAPI**             | Framework moderno y rápido para crear APIs con Python, basado en tipado y compatible con OpenAPI/Swagger.                |
+| **Uvicorn [standard]**  | Servidor ASGI de alto rendimiento utilizado para ejecutar aplicaciones FastAPI.                                          |
+| **SQLModel**            | ORM (Object Relational Mapper) que combina la simplicidad de SQLAlchemy y Pydantic para trabajar con bases de datos.     |
+| **psycopg2-binary**     | Adaptador que permite la conexión y ejecución de consultas en bases de datos PostgreSQL.                                 |
+| **Pydantic**            | Biblioteca para validación y manejo de datos usando modelos basados en anotaciones de tipo.                              |
+| **pydantic-settings**   | Extensión de Pydantic para gestionar configuraciones del entorno (variables `.env`, configuraciones del servidor, etc.). |
+| **python-dotenv**       | Permite cargar variables de entorno desde un archivo `.env`, facilitando la configuración y seguridad de credenciales.   |
+
 
 ## Pasos para la Instalación y Configuración
 
@@ -80,3 +83,29 @@ Una API REST que cumple con los principios SOLID. Que permite Crear y Gestionar 
    ```bash
    deactivate
    ```
+
+### Endpoints de API
+
+| Endpoint                              | Descripción                                     |
+| :------------------------------------ | :---------------------------------------------- |
+| **POST /autos**                       | Crear un nuevo auto.                            |
+| **GET /autos**                        | Listar autos con paginación.                    |
+| **GET /autos/{auto_id}**              | Obtener un auto por ID.                         |
+| **PUT /autos/{auto_id}**              | Actualizar un auto existente.                   |
+| **DELETE /autos/{auto_id}**           | Eliminar un auto por ID.                        |
+| **GET /autos/chasis/{numero_chasis}** | Buscar un auto por número de chasis.            |
+| **GET /autos/{auto_id}/with-ventas**  | Obtener un auto con todas sus ventas asociadas. |
+
+
+| Endpoint                             | Descripción                                          |
+| :----------------------------------- | :--------------------------------------------------- |
+| **POST /ventas**                     | Crear una nueva venta.                               |
+| **GET /ventas**                      | Listar ventas con paginación.                        |
+| **GET /ventas/{venta_id}**           | Obtener una venta por ID.                            |
+| **PUT /ventas/{venta_id}**           | Actualizar una venta existente.                      |
+| **DELETE /ventas/{venta_id}**        | Eliminar una venta por ID.                           |
+| **GET /ventas/auto/{auto_id}**       | Listar ventas asociadas a un auto específico.        |
+| **GET /ventas/comprador/{nombre}**   | Buscar ventas por nombre del comprador.              |
+| **GET /ventas/{venta_id}/with-auto** | Obtener una venta con información completa del auto. |
+
+
