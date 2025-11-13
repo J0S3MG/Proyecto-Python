@@ -1,4 +1,4 @@
-# API de Gestion de Autos y Ventas con FastAPI
+# API con FastApi — José Manuel González
 
 Una API REST que cumple con los principios SOLID. Que permite Crear y Gestionar autos y ventas.
 
@@ -88,27 +88,23 @@ PyServer/
 
 ## Endpoints de Autos (/autos)
 
-| Endpoint                              | Descripción                                     |
-| :------------------------------------ | :---------------------------------------------- |
-| **POST /autos**                       | Crear un nuevo auto.                            |
-| **GET /autos**                        | Listar autos con paginación.                    |
-| **GET /autos/{auto_id}**              | Obtener un auto por ID.                         |
-| **PUT /autos/{auto_id}**              | Actualizar un auto existente.                   |
-| **DELETE /autos/{auto_id}**           | Eliminar un auto por ID.                        |
-| **GET /autos/chasis/{numero_chasis}** | Buscar un auto por número de chasis.            |
-| **GET /autos/{auto_id}/with-ventas**  | Obtener un auto con todas sus ventas asociadas. |
+- POST /autos - Crear nuevo auto
+- GET /autos - Listar autos con paginación
+- GET /autos/{auto_id} - Obtener auto por ID
+- PUT /autos/{auto_id} - Actualizar auto
+- DELETE /autos/{auto_id} - Eliminar auto
+- GET /autos/chasis/{numero_chasis}
+- Buscar por número de chasis
+- GET /autos/{auto_id}/with-ventas - Auto con sus ventas
 
 ## Endpoints de Ventas (/ventas)
 
-| Endpoint                             | Descripción                                          |
-| :----------------------------------- | :--------------------------------------------------- |
-| **POST /ventas**                     | Crear una nueva venta.                               |
-| **GET /ventas**                      | Listar ventas con paginación.                        |
-| **GET /ventas/{venta_id}**           | Obtener una venta por ID.                            |
-| **PUT /ventas/{venta_id}**           | Actualizar una venta existente.                      |
-| **DELETE /ventas/{venta_id}**        | Eliminar una venta por ID.                           |
-| **GET /ventas/auto/{auto_id}**       | Listar ventas asociadas a un auto específico.        |
-| **GET /ventas/comprador/{nombre}**   | Buscar ventas por nombre del comprador.              |
-| **GET /ventas/{venta_id}/with-auto** | Obtener una venta con información completa del auto. |
-
+- POST /ventas - Crear nueva venta
+- GET /ventas - Listar ventas con paginación
+- GET /ventas/{venta_id} - Obtener venta por ID
+- PUT /ventas/{venta_id} - Actualizar venta
+- DELETE /ventas/{venta_id} - Eliminar venta
+- GET /ventas/auto/{auto_id} - Ventas de un auto específico
+- GET /ventas/comprador/{nombre} - Ventas por nombre de comprador
+- GET /ventas/{venta_id}/with-auto - Venta con información del auto
 
