@@ -86,6 +86,8 @@ PyServer/
 
 ### Endpoints de API
 
+## Endpoints de Autos (/autos)
+
 | Endpoint                              | Descripción                                     |
 | :------------------------------------ | :---------------------------------------------- |
 | **POST /autos**                       | Crear un nuevo auto.                            |
@@ -96,6 +98,7 @@ PyServer/
 | **GET /autos/chasis/{numero_chasis}** | Buscar un auto por número de chasis.            |
 | **GET /autos/{auto_id}/with-ventas**  | Obtener un auto con todas sus ventas asociadas. |
 
+## Endpoints de Ventas (/ventas)
 
 | Endpoint                             | Descripción                                          |
 | :----------------------------------- | :--------------------------------------------------- |
