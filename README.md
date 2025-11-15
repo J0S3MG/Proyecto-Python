@@ -6,15 +6,17 @@ Una API REST que cumple con los principios SOLID. Que permite Crear y Gestionar 
 
 ```
 PyServer/
-├── main.py              # Aplicación FastAPI principal
-├── database.py          # Configuración de base de datos PostgreSQL
+├── main.py              # Aplicación FastAPI principal.
+├── database.py          # Configuración de base de datos PostgreSQL.
 ├── deps.py              # "Factory" donde se hace la DIP.
-├── Controllers.py       # Carpeta con los Controladores de la API (Auto, Venta)
-├── Services.py          # Carpeta con los Servicios (Auto, Venta, Join)
-|      └── Interfaces    # Carpeta con las Interfaces para los Servicios y Repositorios
-├── Repositories.py      # Carpeta con los Repositorios (Auto, Venta)
-├── Models.py            # Carpeta con los Modelos (Auto, Venta, Join)
-└── requirements.txt     # Dependencias del proyecto
+├── Controllers.py       # Carpeta con los Controladores de la API (Auto, Venta).
+├── Services.py          # Carpeta con los Servicios (Auto, Venta, Join).
+|      └── Interfaces    # Carpeta con las Interfaces para los Servicios y Repositorios.
+├── Repositories.py      # Carpeta con los Repositorios (Auto, Venta).
+├── Models.py            # Carpeta con los Modelos (Auto, Venta, Join).
+├── start.bat            # Inicia la app.
+├── docker-compose.yml   # Crea y configura la BD.
+└── requirements.txt     # Dependencias del proyecto.
 
 ```
 
