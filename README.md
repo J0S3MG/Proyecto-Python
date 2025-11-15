@@ -69,30 +69,29 @@ PyServer/
 
 1. **Para detener la app:** Presiona `Ctrl + C` en la terminal que el archivo start.bat abrió
    Al hacer `Ctrl + C` saldra este mensaje `¿Desea terminar el trabajo por lotes? S/N` marque N,
-   luego saldra un mensaje ` Deseas detener PostgreSQL tambien? (S/N):` ahi marque S,
+   luego saldra un mensaje `Deseas detener PostgreSQL tambien? (S/N):` ahi marque S,
    luego precione cualquier tecla para salir.
 
 ### Endpoints de API
 
 ## Endpoints de Autos (/autos)
 
-- POST /autos - Crear nuevo auto
-- GET /autos - Listar autos con paginación
-- GET /autos/{auto_id} - Obtener auto por ID
-- PUT /autos/{auto_id} - Actualizar auto
-- DELETE /autos/{auto_id} - Eliminar auto
-- GET /autos/chasis/{numero_chasis}
-- Buscar por número de chasis
-- GET /autos/{auto_id}/with-ventas - Auto con sus ventas
+- `POST /autos` - Crear nuevo auto
+- `GET /autos` - Listar autos con paginación
+- `GET /autos/{auto_id}` - Obtener auto por ID
+- `PUT /autos/{auto_id}` - Actualizar auto
+- `DELETE /autos/{auto_id}` - Eliminar auto
+- `GET /autos/chasis/{numero_chasis}` - Buscar por número de chasis
+- `GET /autos/{auto_id}/with-ventas` - Auto con sus ventas
 
 ## Endpoints de Ventas (/ventas)
 
-- POST /ventas - Crear nueva venta
-- GET /ventas - Listar ventas con paginación
-- GET /ventas/{venta_id} - Obtener venta por ID
-- PUT /ventas/{venta_id} - Actualizar venta
-- DELETE /ventas/{venta_id} - Eliminar venta
-- GET /ventas/auto/{auto_id} - Ventas de un auto específico
-- GET /ventas/comprador/{nombre} - Ventas por nombre de comprador
-- GET /ventas/{venta_id}/with-auto - Venta con información del auto
+- `POST /ventas` - Crear nueva venta
+- `GET /ventas` - Listar ventas con paginación
+- `GET /ventas/{venta_id}` - Obtener venta por ID
+- `PUT /ventas/{venta_id}` - Actualizar venta
+- `DELETE /ventas/{venta_id}` - Eliminar venta
+- `GET /ventas/auto/{auto_id}` - Ventas de un auto específico
+- `GET /ventas/comprador/{nombre}` - Ventas por nombre de comprador
+- `GET /ventas/{venta_id}/with-auto` - Venta con información del auto
 
