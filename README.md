@@ -34,37 +34,19 @@ PyServer/
 | **python-dotenv**       | Permite cargar variables de entorno desde un archivo `.env`, facilitando la configuración y seguridad de credenciales.   |
 
 
-## Pasos para la Instalación y Configuración
+## Ejecutar la Aplicación
 
 1. **Clonar o descargar el proyecto**
    ```bash
    git clone https://github.com/J0S3MG/Proyecto-Python.git
    cd PyServer
    ```
-
-2. **Crear un entorno virtual**
-   ```bash
-   python -m venv venv
-   ```
-
-3. **Activar el entorno virtual**
-   ```bash
-   .\venv\Scripts\activate
-   ```
-
-4. **Instalar las dependencias**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-
-## Ejecutar la Aplicación
-
-1. **Ve al directorio donde clonaste el proyecto**
+   
+2. **Ve al directorio donde clonaste el proyecto**
    Dentro de la carpeta PyServer haga click en el archivo start.bat
-   ASEGURESE de tener docker instalado.
+   ASEGURESE de tener docker y python instalado.
 
-4. **La aplicación estará disponible en:**
+3. **La aplicación estará disponible en:**
    - **API**: http://localhost:8000
 
 ### Detener la Aplicación y Desactivar el Entorno
