@@ -2,7 +2,6 @@ from abc import ABC, abstractmethod
 from typing import List, Optional
 from Models.Venta import VentaCreate, VentaUpdate, VentaResponse
 
-
 # -------------------- Interfaz del Repositorio --------------------
 class VentaRepositoryInterface(ABC):
     """Interfaz para definir las operaciones del repositorio de venta"""

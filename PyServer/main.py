@@ -7,11 +7,11 @@ from Controllers.VentaController import router as venta_router # Importamos el e
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     print("="*80)
-    print("🚀 INICIANDO APLICACIÓN")
+    print("INICIANDO APLICACIÓN")
     print("="*80)
     create_db_and_tables()
     yield
-    print("⛔ App terminando...")
+    print("App terminando...")
     
 app = FastAPI(
     title="FastAPI CRUD Ventas-Auto", 

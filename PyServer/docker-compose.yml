@@ -1,0 +1,16 @@
+services: # Lista de contenedores que se van a crear.
+  PruebaServicio: #  Nombre del servicio.
+    image: postgres:latest # Imagen de PostgreSQL.
+    container_name: PostgresCont # Nombre del contenedor.
+    environment: # Variables de entorno (usuario, contraseña, BD).
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: PruebaPy
+    ports: # Mapeo de puertos (host:contenedor).
+      - "5432:5432"
+    volumes: # Persistencia de datos (para que no pierdas la BD al reiniciar).
+      - postgres_data:/var/lib/postgresql
+    restart: unless-stopped # Se reinicia automáticamente si falla.
+
+volumes:
+  postgres_data:
