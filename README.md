@@ -56,33 +56,21 @@ PyServer/
    ```
 
 
-
 ## Ejecutar la Aplicación
 
-1. **Asegúrate de tener el entorno virtual activado**
-   ```bash
-   # En Windows
-   .\venv\Scripts\activate
-   ```
+1. **Ve al directorio donde clonaste el proyecto**
+   Dentro de la carpeta PyServer haga click en el archivo start.bat
+   ASEGURESE de tener docker instalado.
 
-2. **Iniciar el servidor de desarrollo**
-   ```bash
-   uvicorn main:app --reload
-   ```
-
-3. **La aplicación estará disponible en:**
+4. **La aplicación estará disponible en:**
    - **API**: http://localhost:8000
-   - **Documentación Interactiva**: http://localhost:8000/docs
-   - **Documentación Alternativa**: http://localhost:8000/redoc
 
 ### Detener la Aplicación y Desactivar el Entorno
 
-1. **Para detener el servidor:** Presiona `Ctrl + C` en la terminal
-
-2. **Para desactivar el entorno virtual:**
-   ```bash
-   deactivate
-   ```
+1. **Para detener la app:** Presiona `Ctrl + C` en la terminal que el archivo start.bat abrió
+   Al hacer `Ctrl + C` saldra este mensaje `¿Desea terminar el trabajo por lotes? S/N` marque N,
+   luego saldra un mensaje ` Deseas detener PostgreSQL tambien? (S/N):` ahi marque S,
+   luego precione cualquier tecla para salir.
 
 ### Endpoints de API
 
