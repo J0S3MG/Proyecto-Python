@@ -56,7 +56,6 @@ PyServer/
    luego saldra un mensaje `Deseas detener PostgreSQL tambien? (S/N):` ahi marque S,
    luego precione cualquier tecla para salir.
 
-### Endpoints de API
 
 ## Endpoints de Autos (/autos)
 
